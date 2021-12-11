@@ -1,7 +1,8 @@
-<ng-container class="center"><h1>
-  {{ title }}
-</h1>
-  <table mat-table [dataSource]="dataSource">
+<div>
+  <h1 class="center-text">
+    {{ title }}
+  </h1>
+  <table class="center" mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="Phone">
       <th mat-header-cell *matHeaderCellDef>Phone</th>
       <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
@@ -19,7 +20,9 @@
 
     <ng-container matColumnDef="State">
       <th mat-header-cell *matHeaderCellDef>State</th>
-      <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon>{{element.state === true ? 'done' : 'close' }}</mat-icon>
+      </td>
     </ng-container>
 
 
@@ -27,4 +30,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-</ng-container>
+</div>

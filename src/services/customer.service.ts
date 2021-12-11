@@ -8,13 +8,14 @@ import {environment} from "../environments/environment";
   providedIn: 'root'
 })
 export class CustomerService {
-  httpClient: HttpClient;
+  constructor(private httpClient: HttpClient) {
+  }
 
   getCustomers(country?: string, state?: boolean): Observable<Customer[]> {
     let params = new HttpParams();
     params = country ? params.append("country", country) : params;
     params = state ? params.append("state", String(state)) : params;
 
-    return this.httpClient.get<Customer[]>(environment.JUMIA_BE_URL, {params: params});
+    return this.httpClient.get<Customer[]>(`${environment.JUMIA_BE_URL}customer/get-all`, {params: params});
   }
 }

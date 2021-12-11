@@ -1,4 +1,12 @@
 .center {
-  align-content: center;
-  justify-content: center;
+  margin: 0 auto;
 }
+
+.center-text {
+  text-align: center;
+}
+
+table {
+  width: 50%;
+}
+
