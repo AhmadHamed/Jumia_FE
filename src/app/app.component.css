@@ -10,3 +10,12 @@ table {
   width: 50%;
 }
 
+.filters {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.filter-item{
+  padding: 0 1%;
+}

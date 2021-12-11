@@ -14,7 +14,7 @@ export class CustomerService {
   getCustomers(country?: string, state?: boolean): Observable<Customer[]> {
     let params = new HttpParams();
     params = country ? params.append("country", country) : params;
-    params = state ? params.append("state", String(state)) : params;
+    params = (state !== undefined) ? params.append("state", String(state)) : params;
 
     return this.httpClient.get<Customer[]>(`${environment.JUMIA_BE_URL}customer/get-all`, {params: params});
   }

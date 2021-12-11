@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {Customer} from "../models/customer.model";
 import {CustomerService} from "../services/customer.service";
@@ -8,8 +8,10 @@ import {CustomerService} from "../services/customer.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  title = 'Jumia phone validator';
+export class AppComponent implements OnInit {
+  title: string = 'Jumia phone validator';
+  countryFilter: string;
+  stateFilter: boolean;
   public displayedColumns: string[] = ['Phone', 'CountryCode', 'Country', 'State'];
   public dataSource = new MatTableDataSource<Customer>();
 
@@ -26,6 +28,13 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
+  filter(): void {
+    this.getCustomers(this.countryFilter, this.stateFilter);
+  }
+
+  reset(): void {
+    this.countryFilter = undefined;
+    this.stateFilter = undefined;
+    this.getCustomers();
   }
 }

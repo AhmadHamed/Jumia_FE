@@ -2,6 +2,19 @@
   <h1 class="center-text">
     {{ title }}
   </h1>
+  <div class="filters center">
+    <mat-form-field class="filter-item" appearance="standard">
+      <mat-label>Country</mat-label>
+      <input matInput [(ngModel)]="countryFilter" (change)="filter()" placeholder="Type then press enter">
+    </mat-form-field>
+    <mat-checkbox class="filter-item" [(ngModel)]="stateFilter"
+                  [color]="'primary'"
+                  (change)="filter()">
+      State
+    </mat-checkbox>
+    <button class="filter-item" mat-flat-button color="accent" (click)="reset()">Reset</button>
+
+  </div>
   <table class="center" mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="Phone">
       <th mat-header-cell *matHeaderCellDef>Phone</th>
