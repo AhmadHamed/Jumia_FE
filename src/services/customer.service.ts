@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {CustomerModel} from "../models/customer.model";
+import {Customer} from "../models/customer.model";
 import {environment} from "../environments/environment";
 
 @Injectable({
@@ -10,11 +10,11 @@ import {environment} from "../environments/environment";
 export class CustomerService {
   httpClient: HttpClient;
 
-  getCustomers(country?: string, state?: boolean): Observable<CustomerModel> {
+  getCustomers(country?: string, state?: boolean): Observable<Customer[]> {
     let params = new HttpParams();
-    params.append("country", country);
-    params.append("state", String(state));
+    params = country ? params.append("country", country) : params;
+    params = state ? params.append("state", String(state)) : params;
 
-    return this.httpClient.get<CustomerModel>(environment.JUMIA_BE_URL, {params: params});
+    return this.httpClient.get<Customer[]>(environment.JUMIA_BE_URL, {params: params});
   }
 }

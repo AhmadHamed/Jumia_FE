@@ -1,4 +1,4 @@
-export interface CustomerModel {
+export interface Customer {
   phone: string,
   countryCode: string,
   country: string,
